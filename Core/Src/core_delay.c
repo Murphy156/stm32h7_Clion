@@ -1,14 +1,22 @@
 /**
   ******************************************************************
   * @file    core_delay.c
-  * @author  Leo
+  * @author  fire
   * @version V1.0
-  * @date    2023-10-07
+  * @date    2018-xx-xx
   * @brief   使用内核寄存器精确延时
+  ******************************************************************
+  * @attention
+  *
+  * 实验平台:野火 STM32H743开发板
+  * 论坛    :http://www.firebbs.cn
+  * 淘宝    :https://fire-stm32.taobao.com
+  *
   ******************************************************************
   */
 
 #include "core_delay.h"
+
 
 /*
 **********************************************************************
@@ -37,13 +45,14 @@
 #define  DEM_CR_TRCENA                   (1 << 24)
 #define  DWT_CR_CYCCNTENA                (1 <<  0)
 
+
 /**
   * @brief  初始化时间戳
   * @param  无
   * @retval 无
   * @note   使用延时函数前，必须调用本函数
   */
-HAL_StatusTypeDef HAL_InitTick_User(uint32_t TickPriority)
+HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
 {
     /* 使能DWT外设 */
     DEM_CR |= (uint32_t)DEM_CR_TRCENA;
@@ -57,7 +66,6 @@ HAL_StatusTypeDef HAL_InitTick_User(uint32_t TickPriority)
     return HAL_OK;
 }
 
-
 /**
   * @brief  读取当前时间戳
   * @param  无
@@ -68,7 +76,6 @@ uint32_t CPU_TS_TmrRd(void)
     return ((uint32_t)DWT_CYCCNT);
 }
 
-
 /**
   * @brief  读取当前时间戳
   * @param  无
@@ -78,6 +85,7 @@ uint32_t HAL_GetTick(void)
 {
     return ((uint32_t)DWT_CYCCNT/SysClockFreq*1000);
 }
+
 
 /**
   * @brief  采用CPU的内部计数实现精确延时，32位计数器
@@ -127,4 +135,3 @@ void CPU_TS_Tmr_Delay_US(uint32_t us)
 }
 
 /*********************************************END OF FILE**********************/
-

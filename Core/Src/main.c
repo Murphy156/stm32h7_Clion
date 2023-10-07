@@ -22,6 +22,7 @@
 #include "bsp_led.h"
 #include "bep_key.h"
 #include "core_delay.h"
+#include "bsp_debug_usart.h"
 #include "retarget.h"
 
 /*** FreeRTOS头文件 */
@@ -46,8 +47,8 @@ UART_HandleTypeDef huart1;
 *                             函数声明
 *************************************************************************
 */
-
 static void AppTaskCreate(void); /*** 用于创建任务 */
+
 static void LED_Task(void* pvParameters); /*** LED_Task任务实现*/
 static void KEY_Task(void* pvParameters); /*** KEY_Task任务实现*/
 
@@ -72,7 +73,7 @@ int main(void)
 
     RetargetInit(&huart1);
 
-    printf("按下KEY1挂起任务，按下KEY2恢复任务\n");
+
 
     /** 创建AppTaskCreate任务 */
     xReturn = xTaskCreate((TaskFunction_t )AppTaskCreate,  /* 任务入口函数 */
@@ -87,10 +88,7 @@ int main(void)
     else
         return -1;
 
-    while (1)    /*** 正常不会执行到这里 */
-    {
-
-    };
+    while (1);    /*** 正常不会执行到这里 */
 }
 
 /***********************************************************************
@@ -113,7 +111,6 @@ static void AppTaskCreate(void)
                           (UBaseType_t   )  2         ,/** 任务的优先级*/
                           (TaskHandle_t* )  &LED_Task_Handle);/** 任务控制块指针*/
     if(pdPASS == xReturn)
-        printf("创建LED_Task任务成功！\r\n");
 
     /*** 创建KEY_Task任务 */
     xReturn =  xTaskCreate((TaskFunction_t ) KEY_Task   ,/** 任务入口函数 */
@@ -123,7 +120,6 @@ static void AppTaskCreate(void)
                            (UBaseType_t    ) 3          ,/** 任务的优先级*/
                            (TaskHandle_t*  ) &KEY_Task_Handle);   /** 任务控制块指针*/
     if(pdPASS == xReturn)
-        printf("创建KEY_Task任务成功!\\r\\n");
 
     vTaskDelete(AppTaskCreate_Handle);
 
@@ -162,15 +158,11 @@ static void KEY_Task(void* parameter)
     {
         if( Key_Scan(KEY1_GPIO_PORT,KEY1_PIN) == KEY_ON )
         {/* K1 被按下 */
-            printf("挂起LED任务！\n");
             vTaskSuspend(LED_Task_Handle);/* 挂起LED任务 */
-            printf("挂起LED任务成功！\n");
         }
         if( Key_Scan(KEY2_GPIO_PORT,KEY2_PIN) == KEY_ON )
         {/* K2 被按下 */
-            printf("恢复LED任务！\n");
             vTaskResume(LED_Task_Handle);/* 恢复LED任务！ */
-            printf("恢复LED任务成功！\n");
         }
         vTaskDelay(20);/* 延时20个tick */
     }
@@ -184,11 +176,19 @@ static void KEY_Task(void* parameter)
   *********************************************************************/
 static void BSP_Init(void)
 {
-    HAL_Init();
-
+//    HAL_Init();
+    /* 系统时钟初始化成400MHz */
     SystemClock_Config();
+
+    /* 初始化SysTick */
+    HAL_SYSTICK_Config( HAL_RCC_GetSysClockFreq() / configTICK_RATE_HZ );
+
     /* LED 端口初始化 */
     LED_GPIO_Config();
+
+    /* usart 端口初始化 */
+    DEBUG_USART_Config();
+
     /*按键初始化*/
     Key_GPIO_Config();
 
@@ -221,16 +221,12 @@ static void SystemClock_Config(void)
     RCC_ClkInitTypeDef RCC_ClkInitStruct;
     RCC_OscInitTypeDef RCC_OscInitStruct;
     HAL_StatusTypeDef ret = HAL_OK;
-
     /*使能供电配置更新 */
     MODIFY_REG(PWR->CR3, PWR_CR3_SCUEN, 0);
-
     /* 当器件的时钟频率低于最大系统频率时，电压调节可以优化功耗，
            关于系统频率的电压调节值的更新可以参考产品数据手册。  */
     __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
-
     while(!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY)) {}
-
     /* 启用HSE振荡器并使用HSE作为源激活PLL */
     RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
     RCC_OscInitStruct.HSEState = RCC_HSE_ON;
@@ -252,7 +248,6 @@ static void SystemClock_Config(void)
     {
         while(1) { ; }
     }
-
     /* 选择PLL作为系统时钟源并配置总线时钟分频器 */
     RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK  | \
                                    RCC_CLOCKTYPE_HCLK    | \

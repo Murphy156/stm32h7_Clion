@@ -1230,71 +1230,71 @@ typedef struct
 
 typedef struct
 {
- __IO uint32_t CR;             /*!< RCC clock control register,                                              Address offset: 0x00  */
- __IO uint32_t HSICFGR;        /*!< HSI Clock Calibration Register,                                          Address offset: 0x04  */
- __IO uint32_t CRRCR;          /*!< Clock Recovery RC  Register,                                             Address offset: 0x08  */
- __IO uint32_t CSICFGR;        /*!< CSI Clock Calibration Register,                                          Address offset: 0x0C  */
- __IO uint32_t CFGR;           /*!< RCC clock configuration register,                                        Address offset: 0x10  */
- uint32_t     RESERVED1;       /*!< Reserved,                                                                Address offset: 0x14  */
- __IO uint32_t D1CFGR;         /*!< RCC Domain 1 configuration register,                                     Address offset: 0x18  */
- __IO uint32_t D2CFGR;         /*!< RCC Domain 2 configuration register,                                     Address offset: 0x1C  */
- __IO uint32_t D3CFGR;         /*!< RCC Domain 3 configuration register,                                     Address offset: 0x20  */
- uint32_t     RESERVED2;       /*!< Reserved,                                                                Address offset: 0x24  */
- __IO uint32_t PLLCKSELR;      /*!< RCC PLLs Clock Source Selection Register,                                Address offset: 0x28  */
- __IO uint32_t PLLCFGR;        /*!< RCC PLLs  Configuration Register,                                        Address offset: 0x2C  */
- __IO uint32_t PLL1DIVR;       /*!< RCC PLL1 Dividers Configuration Register,                                Address offset: 0x30  */
- __IO uint32_t PLL1FRACR;      /*!< RCC PLL1 Fractional Divider Configuration Register,                      Address offset: 0x34  */
- __IO uint32_t PLL2DIVR;       /*!< RCC PLL2 Dividers Configuration Register,                                Address offset: 0x38  */
- __IO uint32_t PLL2FRACR;      /*!< RCC PLL2 Fractional Divider Configuration Register,                      Address offset: 0x3C  */
- __IO uint32_t PLL3DIVR;       /*!< RCC PLL3 Dividers Configuration Register,                                Address offset: 0x40  */
- __IO uint32_t PLL3FRACR;      /*!< RCC PLL3 Fractional Divider Configuration Register,                      Address offset: 0x44  */
- uint32_t      RESERVED3;      /*!< Reserved,                                                                Address offset: 0x48  */
- __IO uint32_t  D1CCIPR;       /*!< RCC Domain 1 Kernel Clock Configuration Register                         Address offset: 0x4C  */
- __IO uint32_t  D2CCIP1R;      /*!< RCC Domain 2 Kernel Clock Configuration Register                         Address offset: 0x50  */
- __IO uint32_t  D2CCIP2R;      /*!< RCC Domain 2 Kernel Clock Configuration Register                         Address offset: 0x54  */
- __IO uint32_t  D3CCIPR;       /*!< RCC Domain 3 Kernel Clock Configuration Register                         Address offset: 0x58  */
- uint32_t      RESERVED4;      /*!< Reserved,                                                                Address offset: 0x5C  */
- __IO uint32_t  CIER;          /*!< RCC Clock Source Interrupt Enable Register                               Address offset: 0x60  */
- __IO uint32_t  CIFR;          /*!< RCC Clock Source Interrupt Flag Register                                 Address offset: 0x64  */
- __IO uint32_t  CICR;          /*!< RCC Clock Source Interrupt Clear Register                                Address offset: 0x68  */
- uint32_t     RESERVED5;       /*!< Reserved,                                                                Address offset: 0x6C  */
- __IO uint32_t  BDCR;          /*!< RCC Vswitch Backup Domain Control Register,                              Address offset: 0x70  */
- __IO uint32_t  CSR;           /*!< RCC clock control & status register,                                     Address offset: 0x74  */
- uint32_t     RESERVED6;       /*!< Reserved,                                                                Address offset: 0x78  */
- __IO uint32_t AHB3RSTR;       /*!< RCC AHB3 peripheral reset register,                                      Address offset: 0x7C  */
- __IO uint32_t AHB1RSTR;       /*!< RCC AHB1 peripheral reset register,                                      Address offset: 0x80  */
- __IO uint32_t AHB2RSTR;       /*!< RCC AHB2 peripheral reset register,                                      Address offset: 0x84  */
- __IO uint32_t AHB4RSTR;       /*!< RCC AHB4 peripheral reset register,                                      Address offset: 0x88  */
- __IO uint32_t APB3RSTR;       /*!< RCC APB3 peripheral reset register,                                      Address offset: 0x8C  */
- __IO uint32_t APB1LRSTR;      /*!< RCC APB1 peripheral reset Low Word register,                             Address offset: 0x90  */
- __IO uint32_t APB1HRSTR;      /*!< RCC APB1 peripheral reset High Word register,                            Address offset: 0x94  */
- __IO uint32_t APB2RSTR;       /*!< RCC APB2 peripheral reset register,                                      Address offset: 0x98  */
- __IO uint32_t APB4RSTR;       /*!< RCC APB4 peripheral reset register,                                      Address offset: 0x9C  */
- __IO uint32_t GCR;            /*!< RCC RCC Global Control  Register,                                        Address offset: 0xA0  */
- uint32_t     RESERVED8;       /*!< Reserved,                                                                Address offset: 0xA4  */
- __IO uint32_t D3AMR;          /*!< RCC Domain 3 Autonomous Mode Register,                                   Address offset: 0xA8  */
- uint32_t     RESERVED11[9];    /*!< Reserved, 0xAC-0xCC                                                      Address offset: 0xAC  */
- __IO uint32_t RSR;            /*!< RCC Reset status register,                                               Address offset: 0xD0  */
- __IO uint32_t AHB3ENR;        /*!< RCC AHB3 peripheral clock  register,                                     Address offset: 0xD4  */
- __IO uint32_t AHB1ENR;        /*!< RCC AHB1 peripheral clock  register,                                     Address offset: 0xD8  */
- __IO uint32_t AHB2ENR;        /*!< RCC AHB2 peripheral clock  register,                                     Address offset: 0xDC  */
- __IO uint32_t AHB4ENR;        /*!< RCC AHB4 peripheral clock  register,                                     Address offset: 0xE0  */
- __IO uint32_t APB3ENR;        /*!< RCC APB3 peripheral clock  register,                                     Address offset: 0xE4  */
- __IO uint32_t APB1LENR;       /*!< RCC APB1 peripheral clock  Low Word register,                            Address offset: 0xE8  */
- __IO uint32_t APB1HENR;       /*!< RCC APB1 peripheral clock  High Word register,                           Address offset: 0xEC  */
- __IO uint32_t APB2ENR;        /*!< RCC APB2 peripheral clock  register,                                     Address offset: 0xF0  */
- __IO uint32_t APB4ENR;        /*!< RCC APB4 peripheral clock  register,                                     Address offset: 0xF4  */
- uint32_t      RESERVED12;      /*!< Reserved,                                                                Address offset: 0xF8  */
- __IO uint32_t AHB3LPENR;      /*!< RCC AHB3 peripheral sleep clock  register,                               Address offset: 0xFC  */
- __IO uint32_t AHB1LPENR;      /*!< RCC AHB1 peripheral sleep clock  register,                               Address offset: 0x100 */
- __IO uint32_t AHB2LPENR;      /*!< RCC AHB2 peripheral sleep clock  register,                               Address offset: 0x104 */
- __IO uint32_t AHB4LPENR;      /*!< RCC AHB4 peripheral sleep clock  register,                               Address offset: 0x108 */
- __IO uint32_t APB3LPENR;      /*!< RCC APB3 peripheral sleep clock  register,                               Address offset: 0x10C */
- __IO uint32_t APB1LLPENR;     /*!< RCC APB1 peripheral sleep clock  Low Word register,                      Address offset: 0x110 */
- __IO uint32_t APB1HLPENR;     /*!< RCC APB1 peripheral sleep clock  High Word register,                     Address offset: 0x114 */
- __IO uint32_t APB2LPENR;      /*!< RCC APB2 peripheral sleep clock  register,                               Address offset: 0x118 */
- __IO uint32_t APB4LPENR;      /*!< RCC APB4 peripheral sleep clock  register,                               Address offset: 0x11C */
- uint32_t     RESERVED13[4];   /*!< Reserved, 0x120-0x12C                                                    Address offset: 0x120 */
+    __IO uint32_t CR;             /*!< RCC clock control register,                                              Address offset: 0x00  */
+    __IO uint32_t ICSCR;          /*!< RCC Internal Clock Sources Calibration Register,                         Address offset: 0x04  */
+    __IO uint32_t CRRCR;          /*!< Clock Recovery RC  Register,                                             Address offset: 0x08  */
+    uint32_t     RESERVED0;       /*!< Reserved,                                                                Address offset: 0x0C  */
+    __IO uint32_t CFGR;           /*!< RCC clock configuration register,                                        Address offset: 0x10  */
+    uint32_t     RESERVED1;       /*!< Reserved,                                                                Address offset: 0x14  */
+    __IO uint32_t D1CFGR;         /*!< RCC Domain 1 configuration register,                                     Address offset: 0x18  */
+    __IO uint32_t D2CFGR;         /*!< RCC Domain 2 configuration register,                                     Address offset: 0x1C  */
+    __IO uint32_t D3CFGR;         /*!< RCC Domain 3 configuration register,                                     Address offset: 0x20  */
+    uint32_t     RESERVED2;       /*!< Reserved,                                                                Address offset: 0x24  */
+    __IO uint32_t PLLCKSELR;      /*!< RCC PLLs Clock Source Selection Register,                                Address offset: 0x28  */
+    __IO uint32_t PLLCFGR;        /*!< RCC PLLs  Configuration Register,                                        Address offset: 0x2C  */
+    __IO uint32_t PLL1DIVR;       /*!< RCC PLL1 Dividers Configuration Register,                                Address offset: 0x30  */
+    __IO uint32_t PLL1FRACR;      /*!< RCC PLL1 Fractional Divider Configuration Register,                      Address offset: 0x34  */
+    __IO uint32_t PLL2DIVR;       /*!< RCC PLL2 Dividers Configuration Register,                                Address offset: 0x38  */
+    __IO uint32_t PLL2FRACR;      /*!< RCC PLL2 Fractional Divider Configuration Register,                      Address offset: 0x3C  */
+    __IO uint32_t PLL3DIVR;       /*!< RCC PLL3 Dividers Configuration Register,                                Address offset: 0x40  */
+    __IO uint32_t PLL3FRACR;      /*!< RCC PLL3 Fractional Divider Configuration Register,                      Address offset: 0x44  */
+    uint32_t      RESERVED3;      /*!< Reserved,                                                                Address offset: 0x48  */
+    __IO uint32_t  D1CCIPR;       /*!< RCC Domain 1 Kernel Clock Configuration Register                         Address offset: 0x4C  */
+    __IO uint32_t  D2CCIP1R;      /*!< RCC Domain 2 Kernel Clock Configuration Register                         Address offset: 0x50  */
+    __IO uint32_t  D2CCIP2R;      /*!< RCC Domain 2 Kernel Clock Configuration Register                         Address offset: 0x54  */
+    __IO uint32_t  D3CCIPR;       /*!< RCC Domain 3 Kernel Clock Configuration Register                         Address offset: 0x58  */
+    uint32_t      RESERVED4;      /*!< Reserved,                                                                Address offset: 0x5C  */
+    __IO uint32_t  CIER;          /*!< RCC Clock Source Interrupt Enable Register                               Address offset: 0x60  */
+    __IO uint32_t  CIFR;          /*!< RCC Clock Source Interrupt Flag Register                                 Address offset: 0x64  */
+    __IO uint32_t  CICR;          /*!< RCC Clock Source Interrupt Clear Register                                Address offset: 0x68  */
+    uint32_t     RESERVED5;       /*!< Reserved,                                                                Address offset: 0x6C  */
+    __IO uint32_t  BDCR;          /*!< RCC Vswitch Backup Domain Control Register,                              Address offset: 0x70  */
+    __IO uint32_t  CSR;           /*!< RCC clock control & status register,                                     Address offset: 0x74  */
+    uint32_t     RESERVED6;       /*!< Reserved,                                                                Address offset: 0x78  */
+    __IO uint32_t AHB3RSTR;       /*!< RCC AHB3 peripheral reset register,                                      Address offset: 0x7C  */
+    __IO uint32_t AHB1RSTR;       /*!< RCC AHB1 peripheral reset register,                                      Address offset: 0x80  */
+    __IO uint32_t AHB2RSTR;       /*!< RCC AHB2 peripheral reset register,                                      Address offset: 0x84  */
+    __IO uint32_t AHB4RSTR;       /*!< RCC AHB4 peripheral reset register,                                      Address offset: 0x88  */
+    __IO uint32_t APB3RSTR;       /*!< RCC APB3 peripheral reset register,                                      Address offset: 0x8C  */
+    __IO uint32_t APB1LRSTR;      /*!< RCC APB1 peripheral reset Low Word register,                             Address offset: 0x90  */
+    __IO uint32_t APB1HRSTR;      /*!< RCC APB1 peripheral reset High Word register,                            Address offset: 0x94  */
+    __IO uint32_t APB2RSTR;       /*!< RCC APB2 peripheral reset register,                                      Address offset: 0x98  */
+    __IO uint32_t APB4RSTR;       /*!< RCC APB4 peripheral reset register,                                      Address offset: 0x9C  */
+    __IO uint32_t GCR;            /*!< RCC RCC Global Control  Register,                                        Address offset: 0xA0  */
+    uint32_t     RESERVED7;       /*!< Reserved,                                                                Address offset: 0xA4  */
+    __IO uint32_t D3AMR;          /*!< RCC Domain 3 Autonomous Mode Register,                                   Address offset: 0xA8  */
+    uint32_t     RESERVED8[9];    /*!< Reserved, 0xAC-0xCC                                                      Address offset: 0xAC  */
+    __IO uint32_t RSR;            /*!< RCC Reset status register,                                               Address offset: 0xD0  */
+    __IO uint32_t AHB3ENR;        /*!< RCC AHB3 peripheral clock  register,                                     Address offset: 0xD4  */
+    __IO uint32_t AHB1ENR;        /*!< RCC AHB1 peripheral clock  register,                                     Address offset: 0xD8  */
+    __IO uint32_t AHB2ENR;        /*!< RCC AHB2 peripheral clock  register,                                     Address offset: 0xDC  */
+    __IO uint32_t AHB4ENR;        /*!< RCC AHB4 peripheral clock  register,                                     Address offset: 0xE0  */
+    __IO uint32_t APB3ENR;        /*!< RCC APB3 peripheral clock  register,                                     Address offset: 0xE4  */
+    __IO uint32_t APB1LENR;       /*!< RCC APB1 peripheral clock  Low Word register,                            Address offset: 0xE8  */
+    __IO uint32_t APB1HENR;       /*!< RCC APB1 peripheral clock  High Word register,                           Address offset: 0xEC  */
+    __IO uint32_t APB2ENR;        /*!< RCC APB2 peripheral clock  register,                                     Address offset: 0xF0  */
+    __IO uint32_t APB4ENR;        /*!< RCC APB4 peripheral clock  register,                                     Address offset: 0xF4  */
+    uint32_t      RESERVED9;      /*!< Reserved,                                                                Address offset: 0xF8  */
+    __IO uint32_t AHB3LPENR;      /*!< RCC AHB3 peripheral sleep clock  register,                               Address offset: 0xFC  */
+    __IO uint32_t AHB1LPENR;      /*!< RCC AHB1 peripheral sleep clock  register,                               Address offset: 0x100 */
+    __IO uint32_t AHB2LPENR;      /*!< RCC AHB2 peripheral sleep clock  register,                               Address offset: 0x104 */
+    __IO uint32_t AHB4LPENR;      /*!< RCC AHB4 peripheral sleep clock  register,                               Address offset: 0x108 */
+    __IO uint32_t APB3LPENR;      /*!< RCC APB3 peripheral sleep clock  register,                               Address offset: 0x10C */
+    __IO uint32_t APB1LLPENR;     /*!< RCC APB1 peripheral sleep clock  Low Word register,                      Address offset: 0x110 */
+    __IO uint32_t APB1HLPENR;     /*!< RCC APB1 peripheral sleep clock  High Word register,                     Address offset: 0x114 */
+    __IO uint32_t APB2LPENR;      /*!< RCC APB2 peripheral sleep clock  register,                               Address offset: 0x118 */
+    __IO uint32_t APB4LPENR;      /*!< RCC APB4 peripheral sleep clock  register,                               Address offset: 0x11C */
+    uint32_t     RESERVED10[4];   /*!< Reserved, 0x120-0x12C                                                    Address offset: 0x120 */
 
 } RCC_TypeDef;
 
@@ -14398,35 +14398,58 @@ typedef struct
 #define RCC_CR_PLLRDY_Msk                      (0x1UL << RCC_CR_PLLRDY_Pos)    /*!< 0x02000000 */
 #define RCC_CR_PLLRDY                          RCC_CR_PLLRDY_Msk               /*!< System PLL clock ready */
 
-/********************  Bit definition for RCC_HSICFGR register  ***************/
+/********************  Bit definition for RCC_ICSCR register  ***************/
 /*!< HSICAL configuration */
-#define RCC_HSICFGR_HSICAL_Pos                 (0U)
-#define RCC_HSICFGR_HSICAL_Msk                 (0xFFFUL << RCC_HSICFGR_HSICAL_Pos) /*!< 0x00000FFF */
-#define RCC_HSICFGR_HSICAL                     RCC_HSICFGR_HSICAL_Msk          /*!< HSICAL[11:0] bits */
-#define RCC_HSICFGR_HSICAL_0                   (0x001UL << RCC_HSICFGR_HSICAL_Pos) /*!< 0x00000001 */
-#define RCC_HSICFGR_HSICAL_1                   (0x002UL << RCC_HSICFGR_HSICAL_Pos) /*!< 0x00000002 */
-#define RCC_HSICFGR_HSICAL_2                   (0x004UL << RCC_HSICFGR_HSICAL_Pos) /*!< 0x00000004 */
-#define RCC_HSICFGR_HSICAL_3                   (0x008UL << RCC_HSICFGR_HSICAL_Pos) /*!< 0x00000008 */
-#define RCC_HSICFGR_HSICAL_4                   (0x010UL << RCC_HSICFGR_HSICAL_Pos) /*!< 0x00000010 */
-#define RCC_HSICFGR_HSICAL_5                   (0x020UL << RCC_HSICFGR_HSICAL_Pos) /*!< 0x00000020 */
-#define RCC_HSICFGR_HSICAL_6                   (0x040UL << RCC_HSICFGR_HSICAL_Pos) /*!< 0x00000040 */
-#define RCC_HSICFGR_HSICAL_7                   (0x080UL << RCC_HSICFGR_HSICAL_Pos) /*!< 0x00000080 */
-#define RCC_HSICFGR_HSICAL_8                   (0x100UL << RCC_HSICFGR_HSICAL_Pos) /*!< 0x00000100 */
-#define RCC_HSICFGR_HSICAL_9                   (0x200UL << RCC_HSICFGR_HSICAL_Pos) /*!< 0x00000200 */
-#define RCC_HSICFGR_HSICAL_10                  (0x400UL << RCC_HSICFGR_HSICAL_Pos) /*!< 0x00000400 */
-#define RCC_HSICFGR_HSICAL_11                  (0x800UL << RCC_HSICFGR_HSICAL_Pos) /*!< 0x00000800 */
+#define RCC_ICSCR_HSICAL_Pos                   (0U)
+#define RCC_ICSCR_HSICAL_Msk                   (0xFFFU << RCC_ICSCR_HSICAL_Pos) /*!< 0x00000FFF */
+#define RCC_ICSCR_HSICAL                       RCC_ICSCR_HSICAL_Msk            /*!< HSICAL[11:0] bits */
+#define RCC_ICSCR_HSICAL_0                     (0x001U << RCC_ICSCR_HSICAL_Pos) /*!< 0x00000001 */
+#define RCC_ICSCR_HSICAL_1                     (0x002U << RCC_ICSCR_HSICAL_Pos) /*!< 0x00000002 */
+#define RCC_ICSCR_HSICAL_2                     (0x004U << RCC_ICSCR_HSICAL_Pos) /*!< 0x00000004 */
+#define RCC_ICSCR_HSICAL_3                     (0x008U << RCC_ICSCR_HSICAL_Pos) /*!< 0x00000008 */
+#define RCC_ICSCR_HSICAL_4                     (0x010U << RCC_ICSCR_HSICAL_Pos) /*!< 0x00000010 */
+#define RCC_ICSCR_HSICAL_5                     (0x020U << RCC_ICSCR_HSICAL_Pos) /*!< 0x00000020 */
+#define RCC_ICSCR_HSICAL_6                     (0x040U << RCC_ICSCR_HSICAL_Pos) /*!< 0x00000040 */
+#define RCC_ICSCR_HSICAL_7                     (0x080U << RCC_ICSCR_HSICAL_Pos) /*!< 0x00000080 */
+#define RCC_ICSCR_HSICAL_8                     (0x100U << RCC_ICSCR_HSICAL_Pos) /*!< 0x00000100 */
+#define RCC_ICSCR_HSICAL_9                     (0x200U << RCC_ICSCR_HSICAL_Pos) /*!< 0x00000200 */
+#define RCC_ICSCR_HSICAL_10                    (0x400U << RCC_ICSCR_HSICAL_Pos) /*!< 0x00000400 */
+#define RCC_ICSCR_HSICAL_11                    (0x800U << RCC_ICSCR_HSICAL_Pos) /*!< 0x00000800 */
 
 /*!< HSITRIM configuration */
-#define RCC_HSICFGR_HSITRIM_Pos                (24U)
-#define RCC_HSICFGR_HSITRIM_Msk                (0x7FUL << RCC_HSICFGR_HSITRIM_Pos) /*!< 0x7F000000 */
-#define RCC_HSICFGR_HSITRIM                    RCC_HSICFGR_HSITRIM_Msk         /*!< HSITRIM[6:0] bits */
-#define RCC_HSICFGR_HSITRIM_0                  (0x01UL << RCC_HSICFGR_HSITRIM_Pos) /*!< 0x01000000 */
-#define RCC_HSICFGR_HSITRIM_1                  (0x02UL << RCC_HSICFGR_HSITRIM_Pos) /*!< 0x02000000 */
-#define RCC_HSICFGR_HSITRIM_2                  (0x04UL << RCC_HSICFGR_HSITRIM_Pos) /*!< 0x04000000 */
-#define RCC_HSICFGR_HSITRIM_3                  (0x08UL << RCC_HSICFGR_HSITRIM_Pos) /*!< 0x08000000 */
-#define RCC_HSICFGR_HSITRIM_4                  (0x10UL << RCC_HSICFGR_HSITRIM_Pos) /*!< 0x10000000 */
-#define RCC_HSICFGR_HSITRIM_5                  (0x20UL << RCC_HSICFGR_HSITRIM_Pos) /*!< 0x20000000 */
-#define RCC_HSICFGR_HSITRIM_6                  (0x40UL << RCC_HSICFGR_HSITRIM_Pos) /*!< 0x40000000 */
+#define RCC_ICSCR_HSITRIM_Pos                  (12U)
+#define RCC_ICSCR_HSITRIM_Msk                  (0x3FU << RCC_ICSCR_HSITRIM_Pos) /*!< 0x0003F000 */
+#define RCC_ICSCR_HSITRIM                      RCC_ICSCR_HSITRIM_Msk           /*!< HSITRIM[5:0] bits */
+#define RCC_ICSCR_HSITRIM_0                    (0x01U << RCC_ICSCR_HSITRIM_Pos) /*!< 0x00001000 */
+#define RCC_ICSCR_HSITRIM_1                    (0x02U << RCC_ICSCR_HSITRIM_Pos) /*!< 0x00002000 */
+#define RCC_ICSCR_HSITRIM_2                    (0x04U << RCC_ICSCR_HSITRIM_Pos) /*!< 0x00004000 */
+#define RCC_ICSCR_HSITRIM_3                    (0x08U << RCC_ICSCR_HSITRIM_Pos) /*!< 0x00008000 */
+#define RCC_ICSCR_HSITRIM_4                    (0x10U << RCC_ICSCR_HSITRIM_Pos) /*!< 0x00010000 */
+#define RCC_ICSCR_HSITRIM_5                    (0x20U << RCC_ICSCR_HSITRIM_Pos) /*!< 0x00020000 */
+
+
+/*!< CSICAL configuration */
+#define RCC_ICSCR_CSICAL_Pos                   (18U)
+#define RCC_ICSCR_CSICAL_Msk                   (0xFFU << RCC_ICSCR_CSICAL_Pos) /*!< 0x03FC0000 */
+#define RCC_ICSCR_CSICAL                       RCC_ICSCR_CSICAL_Msk            /*!< CSICAL[7:0] bits */
+#define RCC_ICSCR_CSICAL_0                     (0x01U << RCC_ICSCR_CSICAL_Pos) /*!< 0x00040000 */
+#define RCC_ICSCR_CSICAL_1                     (0x02U << RCC_ICSCR_CSICAL_Pos) /*!< 0x00080000 */
+#define RCC_ICSCR_CSICAL_2                     (0x04U << RCC_ICSCR_CSICAL_Pos) /*!< 0x00100000 */
+#define RCC_ICSCR_CSICAL_3                     (0x08U << RCC_ICSCR_CSICAL_Pos) /*!< 0x00200000 */
+#define RCC_ICSCR_CSICAL_4                     (0x10U << RCC_ICSCR_CSICAL_Pos) /*!< 0x00400000 */
+#define RCC_ICSCR_CSICAL_5                     (0x20U << RCC_ICSCR_CSICAL_Pos) /*!< 0x00800000 */
+#define RCC_ICSCR_CSICAL_6                     (0x40U << RCC_ICSCR_CSICAL_Pos) /*!< 0x01000000 */
+#define RCC_ICSCR_CSICAL_7                     (0x80U << RCC_ICSCR_CSICAL_Pos) /*!< 0x02000000 */
+
+/*!< CSITRIM configuration */
+#define RCC_ICSCR_CSITRIM_Pos                  (26U)
+#define RCC_ICSCR_CSITRIM_Msk                  (0x1FU << RCC_ICSCR_CSITRIM_Pos) /*!< 0x7C000000 */
+#define RCC_ICSCR_CSITRIM                      RCC_ICSCR_CSITRIM_Msk           /*!< CSITRIM[4:0] bits */
+#define RCC_ICSCR_CSITRIM_0                    (0x01U << RCC_ICSCR_CSITRIM_Pos) /*!< 0x04000000 */
+#define RCC_ICSCR_CSITRIM_1                    (0x02U << RCC_ICSCR_CSITRIM_Pos) /*!< 0x08000000 */
+#define RCC_ICSCR_CSITRIM_2                    (0x04U << RCC_ICSCR_CSITRIM_Pos) /*!< 0x10000000 */
+#define RCC_ICSCR_CSITRIM_3                    (0x08U << RCC_ICSCR_CSITRIM_Pos) /*!< 0x20000000 */
+#define RCC_ICSCR_CSITRIM_4                    (0x10U << RCC_ICSCR_CSITRIM_Pos) /*!< 0x40000000 */
 
 
 /********************  Bit definition for RCC_CRRCR register  *****************/

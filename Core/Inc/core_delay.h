@@ -1,5 +1,5 @@
-#ifndef CPROJECT_CORE_DELAY_H
-#define CPROJECT_CORE_DELAY_H
+#ifndef __CORE_DELAY_H
+#define __CORE_DELAY_H
 
 #include "stm32h7xx.h"
 
@@ -17,7 +17,7 @@
  * 函数声明
  ******************************************************************************/
 uint32_t CPU_TS_TmrRd(void);
-HAL_StatusTypeDef HAL_InitTick_User(uint32_t TickPriority);
+HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority);
 
 //使用以下函数前必须先调用CPU_TS_TmrInit函数使能计数器，或使能宏CPU_TS_INIT_IN_DELAY_FUNCTION
 //最大延时值为8秒
@@ -25,4 +25,5 @@ void CPU_TS_Tmr_Delay_US(uint32_t us);
 #define HAL_Delay(ms)     CPU_TS_Tmr_Delay_US(ms*1000)
 #define CPU_TS_Tmr_Delay_S(s)       CPU_TS_Tmr_Delay_MS(s*1000)
 
-#endif //CPROJECT_CORE_DELAY_H
+
+#endif /* __CORE_DELAY_H */
