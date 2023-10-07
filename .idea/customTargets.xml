@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CLionExternalBuildManager">
+    <target id="4d12698e-a011-4077-bb93-8e256d047790" name="ttv2" defaultType="TOOL">
+      <configuration id="aa5c1bc6-fea0-4d46-b98d-6e9d33fd3959" name="ttv2" toolchainName="MinGW-STM32" />
+    </target>
+  </component>
+</project>
