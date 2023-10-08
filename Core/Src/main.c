@@ -24,6 +24,7 @@
 #include "core_delay.h"
 #include "bsp_debug_usart.h"
 #include "retarget.h"
+#include "bsp_stepperControl.h"
 
 /*** FreeRTOS头文件 */
 #include "FreeRTOS.h"
@@ -38,6 +39,7 @@
 static TaskHandle_t AppTaskCreate_Handle = NULL;
 static TaskHandle_t LED_Task_Handle = NULL;
 static TaskHandle_t KEY_Task_Handle = NULL;
+static TaskHandle_t STEPPRR_Task_Handle = NULL;
 
 UART_HandleTypeDef huart1;
 
@@ -51,10 +53,9 @@ static void AppTaskCreate(void); /*** 用于创建任务 */
 
 static void LED_Task(void* pvParameters); /*** LED_Task任务实现*/
 static void KEY_Task(void* pvParameters); /*** KEY_Task任务实现*/
-
 static void BSP_Init(void); /*** 用于初始化板载相关资源*/
 
-void MX_FREERTOS_Init(void);
+//void MX_FREERTOS_Init(void);
 
 /*****************************************************************
   * @brief  主函数
@@ -66,14 +67,12 @@ void MX_FREERTOS_Init(void);
   ****************************************************************/
 int main(void)
 {
+    RetargetInit(&huart1);
+
     BaseType_t xReturn = pdPASS;
 
     /** 开发板硬件初始化 */
     BSP_Init();
-
-    RetargetInit(&huart1);
-
-
 
     /** 创建AppTaskCreate任务 */
     xReturn = xTaskCreate((TaskFunction_t )AppTaskCreate,  /* 任务入口函数 */
@@ -111,6 +110,7 @@ static void AppTaskCreate(void)
                           (UBaseType_t   )  2         ,/** 任务的优先级*/
                           (TaskHandle_t* )  &LED_Task_Handle);/** 任务控制块指针*/
     if(pdPASS == xReturn)
+        printf("创建LED_Task任务成功!");
     /*** 创建KEY_Task任务 */
     xReturn =  xTaskCreate((TaskFunction_t ) KEY_Task   ,/** 任务入口函数 */
                            (const char*    ) "KEY_Task" ,/** 任务名字*/
@@ -119,6 +119,7 @@ static void AppTaskCreate(void)
                            (UBaseType_t    ) 3          ,/** 任务的优先级*/
                            (TaskHandle_t*  ) &KEY_Task_Handle);   /** 任务控制块指针*/
     if(pdPASS == xReturn)
+        printf("创建KEY_Task任务成功!");
     vTaskDelete(AppTaskCreate_Handle);
 
     taskEXIT_CRITICAL();
@@ -143,26 +144,42 @@ static void LED_Task(void* parameter)
 }
 
 /**********************************************************************
-  * @ 函数名  ： LED_Task
-  * @ 功能说明： LED_Task任务主体
+  * @ 函数名  ： KEY_Task
+  * @ 功能说明： KEY_Task任务主体
   * @ 参数    ：
   * @ 返回值  ： 无
   ********************************************************************/
 static void KEY_Task(void* parameter)
 {
+    int motor1_en_flag = 0, motor2_en_flag = 0, motor3_en_flag = 0, motor4_en_flag = 0;
+
     while (1)
     {
         if( Key_Scan(KEY1_GPIO_PORT,KEY1_PIN) == KEY_ON )
         {/* K1 被按下 */
-            vTaskSuspend(LED_Task_Handle);/* 挂起LED任务 */
+            (motor1_en_flag > 0) ? stepper_Stop(step_motor[0].pul_channel) : stepper_Start(step_motor[0].pul_channel);
+            motor1_en_flag = !motor1_en_flag;
+//            stepper_Start(step_motor[0].pul_channel);
         }
         if( Key_Scan(KEY2_GPIO_PORT,KEY2_PIN) == KEY_ON )
         {/* K2 被按下 */
-            vTaskResume(LED_Task_Handle);/* 恢复LED任务！ */
+            (motor2_en_flag > 0) ? stepper_Stop(step_motor[1].pul_channel) : stepper_Start(step_motor[1].pul_channel);
+            motor2_en_flag = !motor2_en_flag;
+        }
+        if( Key_Scan(KEY3_GPIO_PORT,KEY3_PIN) == KEY_ON )
+        {/* K3 被按下 */
+            (motor3_en_flag > 0) ? stepper_Stop(step_motor[2].pul_channel) : stepper_Start(step_motor[2].pul_channel);
+            motor3_en_flag = !motor3_en_flag;
+        }
+        if( Key_Scan(KEY4_GPIO_PORT,KEY4_PIN) == KEY_ON )
+        {/* K4 被按下 */
+            (motor4_en_flag > 0) ? stepper_Stop(step_motor[3].pul_channel) : stepper_Start(step_motor[3].pul_channel);
+            motor4_en_flag = !motor4_en_flag;
         }
         vTaskDelay(20);/* 延时20个tick */
     }
 }
+
 
 /***********************************************************************
   * @ 函数名  ： BSP_Init
@@ -179,6 +196,9 @@ static void BSP_Init(void)
     /* 初始化SysTick */
     HAL_SYSTICK_Config( HAL_RCC_GetSysClockFreq() / configTICK_RATE_HZ );
 
+    /* 配置优先级分组为4 */
+    HAL_NVIC_SetPriorityGrouping( NVIC_PRIORITYGROUP_4 );
+
     /* LED 端口初始化 */
     LED_GPIO_Config();
 
@@ -187,6 +207,9 @@ static void BSP_Init(void)
 
     /*按键初始化*/
     Key_GPIO_Config();
+
+    /* 步进电机初始化 */
+    stepper_Init_test();
 
 }
 
