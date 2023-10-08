@@ -9,7 +9,7 @@
   */
 #include "bsp_debug_usart.h"
 
-UART_HandleTypeDef UartHandle;
+UART_HandleTypeDef UartHandle1;
 extern uint8_t ucTemp;
 /**
  * @brief  DEBUG_USART GPIO 配置,工作模式配置。115200 8-N-1
@@ -46,23 +46,23 @@ void DEBUG_USART_Config(void)
     HAL_GPIO_Init(DEBUG_USART_RX_GPIO_PORT, &GPIO_InitStruct);
 
     /* 配置串DEBUG_USART 模式 */
-    UartHandle.Instance = DEBUG_USART;
-    UartHandle.Init.BaudRate = 115200;
-    UartHandle.Init.WordLength = UART_WORDLENGTH_8B;
-    UartHandle.Init.StopBits = UART_STOPBITS_1;
-    UartHandle.Init.Parity = UART_PARITY_NONE;
-    UartHandle.Init.Mode = UART_MODE_TX_RX;
-    UartHandle.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-    UartHandle.Init.OverSampling = UART_OVERSAMPLING_16;
-    UartHandle.Init.OneBitSampling = UART_ONEBIT_SAMPLING_DISABLED;
-    UartHandle.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
-    HAL_UART_Init(&UartHandle);
+    UartHandle1.Instance = DEBUG_USART;
+    UartHandle1.Init.BaudRate = 115200;
+    UartHandle1.Init.WordLength = UART_WORDLENGTH_8B;
+    UartHandle1.Init.StopBits = UART_STOPBITS_1;
+    UartHandle1.Init.Parity = UART_PARITY_NONE;
+    UartHandle1.Init.Mode = UART_MODE_TX_RX;
+    UartHandle1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+    UartHandle1.Init.OverSampling = UART_OVERSAMPLING_16;
+    UartHandle1.Init.OneBitSampling = UART_ONEBIT_SAMPLING_DISABLED;
+    UartHandle1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+    HAL_UART_Init(&UartHandle1);
 
     /*串口1中断初始化 */
     HAL_NVIC_SetPriority(DEBUG_USART_IRQ, 6, 0);
     HAL_NVIC_EnableIRQ(DEBUG_USART_IRQ);
     /*配置串口接收中断 */
-    __HAL_UART_ENABLE_IT(&UartHandle,UART_IT_RXNE);
+    __HAL_UART_ENABLE_IT(&UartHandle1,UART_IT_RXNE);
 }
 
 
@@ -72,7 +72,7 @@ void Usart_SendString(uint8_t *str)
     unsigned int k=0;
     do
     {
-        HAL_UART_Transmit( &UartHandle,(uint8_t *)(str + k) ,1,1000);
+        HAL_UART_Transmit( &UartHandle1,(uint8_t *)(str + k) ,1,1000);
         k++;
     } while(*(str + k)!='\0');
 
@@ -81,7 +81,7 @@ void Usart_SendString(uint8_t *str)
 int fputc(int ch, FILE *f)
 {
     /* 发送一个字节数据到串口DEBUG_USART */
-    HAL_UART_Transmit(&UartHandle, (uint8_t *)&ch, 1, 1000);
+    HAL_UART_Transmit(&UartHandle1, (uint8_t *)&ch, 1, 1000);
 
     return (ch);
 }
@@ -91,7 +91,7 @@ int fgetc(FILE *f)
 {
 
     int ch;
-    HAL_UART_Receive(&UartHandle, (uint8_t *)&ch, 1, 1000);
+    HAL_UART_Receive(&UartHandle1, (uint8_t *)&ch, 1, 1000);
     return (ch);
 }
 /*********************************************END OF FILE**********************/

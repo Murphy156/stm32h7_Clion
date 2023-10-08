@@ -20,13 +20,16 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="309fa325-2eed-46cc-a25d-57cea8bdd8d1" name="Changes" comment="the problem is printf is didn't work">
-      <change afterPath="$PROJECT_DIR$/Core/Inc/bsp_stepperControl.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/Src/bsp_stepperControl.c" afterDir="false" />
+    <list default="true" id="309fa325-2eed-46cc-a25d-57cea8bdd8d1" name="Changes" comment="add the stepperControl">
+      <change afterPath="$PROJECT_DIR$/Core/Inc/bsp_bldc_control.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core/Inc/bsp_bldc_tim.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core/Inc/bsp_protocol.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core/Src/bsp_bldc_control.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core/Src/bsp_bldc_tim.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core/Src/bsp_protocol.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/bsp_led.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/bsp_led.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/bsp_debug_usart.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/bsp_debug_usart.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/stm32h7xx_it.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/stm32h7xx_it.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +74,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="OpenOCD Download &amp; Run.ttv2">
+  <component name="RunManager" selected="CMake Application.ttv2.elf">
     <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -116,7 +119,7 @@
       <workItem from="1696655143348" duration="773000" />
       <workItem from="1696655939189" duration="26000" />
       <workItem from="1696656368438" duration="21773000" />
-      <workItem from="1696724941488" duration="13134000" />
+      <workItem from="1696724941488" duration="17354000" />
     </task>
     <task id="LOCAL-00001" summary="reset the stm32halrcc and system clock">
       <created>1696690237444</created>
@@ -132,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696732963012</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add the stepperControl">
+      <created>1696750304232</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696750304232</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,7 +168,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="reset the stm32halrcc and system clock" />
     <MESSAGE value="the problem is printf is didn't work" />
-    <option name="LAST_COMMIT_MESSAGE" value="the problem is printf is didn't work" />
+    <MESSAGE value="add the stepperControl" />
+    <option name="LAST_COMMIT_MESSAGE" value="add the stepperControl" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

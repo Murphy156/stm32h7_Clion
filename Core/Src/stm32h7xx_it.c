@@ -24,6 +24,11 @@
 /* FreeRTOS头文件 */
 #include "FreeRTOS.h"
 #include "task.h"
+/** USER Includes */
+#include "bsp_debug_usart.h"
+#include "bsp_led.h"
+#include "bsp_protocol.h"
+#include "bsp_bldc_tim.h"
 
 //extern TIM_HandleTypeDef htim6;
 
@@ -140,6 +145,7 @@ void DebugMon_Handler(void)
 //  /* USER CODE END TIM6_DAC_IRQn 1 */
 //}
 
+/** USER CODE BEGIN 1 */
 /**
 * @brief This function handles System tick timer.
 */
@@ -156,6 +162,23 @@ void SysTick_Handler(void)
         }
     #endif  /* INCLUDE_xTaskGetSchedulerState */
 }
+/** USER CODE END 2 */
+
+/** USER CODE BEGIN 2 */
+void USART_IRQHandler(void)
+{
+    uint8_t data[1];
+
+    if(__HAL_UART_GET_IT_SOURCE(&UartHandle, UART_IT_RXNE) != RESET)
+    {
+        data[0] = UartHandle.Instance->RDR;
+        PushArr(data_buff,data[0]);
+        __HAL_UART_CLEAR_FLAG(&UartHandle, UART_IT_RXNE);
+    }
+    HAL_UART_IRQHandler(&UartHandle);
+    __HAL_UART_ENABLE_IT(&UartHandle,UART_IT_RXNE);
+}
+/** USER CODE END 2 */
 
 
 
