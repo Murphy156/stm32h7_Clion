@@ -8,13 +8,13 @@
 #define USART_BAUDRATE					115200
 
 /** 数据头结构体 */
-typedef __packed struct
-{
-    uint16_t head;    	    /** 包头 */
-    uint8_t cmd;      	    /** 命令 */
-    uint32_t para;			/** 参数 */
-    uint8_t parity;			/** 校验和 */
-}packet_head_t;
+//typedef __packed struct
+//{
+//    uint16_t head;    	    /** 包头 */
+//    uint8_t cmd;      	    /** 命令 */
+//    uint32_t para;			/** 参数 */
+//    uint8_t parity;			/** 校验和 */
+//}packet_head_t;
 
 /** 引脚定义 */
 /*************************************/

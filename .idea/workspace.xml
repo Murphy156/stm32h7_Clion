@@ -20,15 +20,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="309fa325-2eed-46cc-a25d-57cea8bdd8d1" name="Changes" comment="add the stepperControl">
-      <change afterPath="$PROJECT_DIR$/Core/Inc/bsp_bldc_control.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/Inc/bsp_bldc_tim.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/Inc/bsp_protocol.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/Src/bsp_bldc_control.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/Src/bsp_bldc_tim.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/Src/bsp_protocol.c" afterDir="false" />
+    <list default="true" id="309fa325-2eed-46cc-a25d-57cea8bdd8d1" name="Changes" comment="add the whole model">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/bsp_debug_usart.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/bsp_debug_usart.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/bsp_protocol.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/bsp_protocol.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/stm32h7xx_it.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/stm32h7xx_it.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +33,22 @@
   </component>
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="EmbeddedSvdWindowState">
+    <option name="columnWidths">
+      <list>
+        <option value="212" />
+        <option value="92" />
+        <option value="1505" />
+      </list>
+    </option>
+    <option name="columnOrder">
+      <list>
+        <option value="Name" />
+        <option value="Value" />
+        <option value="Description" />
+      </list>
+    </option>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
@@ -74,7 +85,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="CMake Application.ttv2.elf">
+  <component name="RunManager" selected="OpenOCD Download &amp; Run.ttv2">
     <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -119,7 +130,7 @@
       <workItem from="1696655143348" duration="773000" />
       <workItem from="1696655939189" duration="26000" />
       <workItem from="1696656368438" duration="21773000" />
-      <workItem from="1696724941488" duration="17354000" />
+      <workItem from="1696724941488" duration="23517000" />
     </task>
     <task id="LOCAL-00001" summary="reset the stm32halrcc and system clock">
       <created>1696690237444</created>
@@ -142,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696750304232</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add the whole model">
+      <created>1696755246224</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696755246224</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,7 +187,24 @@
     <MESSAGE value="reset the stm32halrcc and system clock" />
     <MESSAGE value="the problem is printf is didn't work" />
     <MESSAGE value="add the stepperControl" />
-    <option name="LAST_COMMIT_MESSAGE" value="add the stepperControl" />
+    <MESSAGE value="add the whole model" />
+    <option name="LAST_COMMIT_MESSAGE" value="add the whole model" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Core/Src/stm32h7xx_it.c</url>
+          <line>173</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Core/Src/main.c</url>
+          <line>78</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -21,10 +21,13 @@
 #include "cmsis_os.h"
 #include "bsp_led.h"
 #include "bep_key.h"
+#include "bsp_protocol.h"
 #include "core_delay.h"
 #include "bsp_debug_usart.h"
 #include "retarget.h"
 #include "bsp_stepperControl.h"
+#include "bsp_bldc_control.h"
+
 
 /*** FreeRTOS头文件 */
 #include "FreeRTOS.h"
@@ -39,7 +42,7 @@
 static TaskHandle_t AppTaskCreate_Handle = NULL;
 static TaskHandle_t LED_Task_Handle = NULL;
 static TaskHandle_t KEY_Task_Handle = NULL;
-static TaskHandle_t STEPPRR_Task_Handle = NULL;
+static TaskHandle_t PROTOCOL_Task_Handle = NULL;
 
 UART_HandleTypeDef huart1;
 
@@ -51,8 +54,9 @@ UART_HandleTypeDef huart1;
 */
 static void AppTaskCreate(void); /*** 用于创建任务 */
 
-static void LED_Task(void* pvParameters); /*** LED_Task任务实现*/
-static void KEY_Task(void* pvParameters); /*** KEY_Task任务实现*/
+static void LED_Task(void* pvParameters);         /*** LED_Task任务实现*/
+static void KEY_Task(void* pvParameters);         /*** KEY_Task任务实现*/
+static void PROTOCOL_Task(void* pvParameters);    /*** PROTOCOL_Task任务实现*/
 static void BSP_Init(void); /*** 用于初始化板载相关资源*/
 
 //void MX_FREERTOS_Init(void);
@@ -102,12 +106,13 @@ static void AppTaskCreate(void)
 
     taskENTER_CRITICAL(); /*** 进入临界区 */
 
+    /** 数字越大，优先级越大*/
     /*** 创建LED_Task任务 */
     xReturn = xTaskCreate((TaskFunction_t)  LED_Task  ,/** 任务入口函数 */
                           (const char*   ) "LED_Task" ,/** 任务名字*/
                           (uint16_t      )  512       ,/** 任务栈大小*/
                           (void*         )  NULL      ,/** 任务入口函数参数*/
-                          (UBaseType_t   )  2         ,/** 任务的优先级*/
+                          (UBaseType_t   )  4         ,/** 任务的优先级 */
                           (TaskHandle_t* )  &LED_Task_Handle);/** 任务控制块指针*/
     if(pdPASS == xReturn)
         printf("创建LED_Task任务成功!");
@@ -120,6 +125,17 @@ static void AppTaskCreate(void)
                            (TaskHandle_t*  ) &KEY_Task_Handle);   /** 任务控制块指针*/
     if(pdPASS == xReturn)
         printf("创建KEY_Task任务成功!");
+
+
+    xReturn = xTaskCreate((TaskFunction_t ) PROTOCOL_Task   , /** 任务入口函数 */
+                          (const char*    ) "PROTOCOL_Task" , /** 任务名字*/
+                          (uint16_t       ) 512             , /** 任务栈大小*/
+                          (void*          ) NULL            , /** 任务入口函数参数*/
+                          (UBaseType_t    ) 2               , /** 任务的优先级*/
+                          (TaskHandle_t*  ) &PROTOCOL_Task_Handle);
+    if(pdPASS == xReturn)
+        printf("创建PROTOCOL_Task任务成功");
+
     vTaskDelete(AppTaskCreate_Handle);
 
     taskEXIT_CRITICAL();
@@ -151,15 +167,17 @@ static void LED_Task(void* parameter)
   ********************************************************************/
 static void KEY_Task(void* parameter)
 {
-    int motor1_en_flag = 0, motor2_en_flag = 0, motor3_en_flag = 0, motor4_en_flag = 0;
+    int motor1_en_flag = 0, motor2_en_flag = 0, motor3_en_flag = 0, motor4_en_flag = 0, motor5_en_flag = 0;
 
     while (1)
     {
+        LED3_ON;
         if( Key_Scan(KEY1_GPIO_PORT,KEY1_PIN) == KEY_ON )
         {/* K1 被按下 */
+            vTaskSuspend(PROTOCOL_Task_Handle);/** 挂起PROTOCOL_Task任务 */
             (motor1_en_flag > 0) ? stepper_Stop(step_motor[0].pul_channel) : stepper_Start(step_motor[0].pul_channel);
             motor1_en_flag = !motor1_en_flag;
-//            stepper_Start(step_motor[0].pul_channel);
+            vTaskResume(PROTOCOL_Task_Handle);/** 恢复LED任务！ */
         }
         if( Key_Scan(KEY2_GPIO_PORT,KEY2_PIN) == KEY_ON )
         {/* K2 被按下 */
@@ -176,10 +194,30 @@ static void KEY_Task(void* parameter)
             (motor4_en_flag > 0) ? stepper_Stop(step_motor[3].pul_channel) : stepper_Start(step_motor[3].pul_channel);
             motor4_en_flag = !motor4_en_flag;
         }
+        if( Key_Scan(KEY5_GPIO_PORT,KEY5_PIN) == KEY_ON )
+        {/* K5 被按下 */
+            (motor5_en_flag > 0) ? set_BLDC_disable() : set_BLDC_enable();
+            motor5_en_flag = !motor5_en_flag;
+        }
         vTaskDelay(20);/* 延时20个tick */
     }
 }
 
+/**********************************************************************
+  * @ 函数名  ： PROTOCOL_Task
+  * @ 功能说明： PROTOCOL_Task任务主体
+  * @ 参数    ：
+  * @ 返回值  ： 无
+  ********************************************************************/
+static void PROTOCOL_Task(void* pvParameters)
+{
+    while (1)
+    {
+        LED2_ON;
+        receiving_process();
+    }
+
+}
 
 /***********************************************************************
   * @ 函数名  ： BSP_Init
@@ -189,7 +227,7 @@ static void KEY_Task(void* parameter)
   *********************************************************************/
 static void BSP_Init(void)
 {
-//    HAL_Init();
+    HAL_Init();
     /* 系统时钟初始化成400MHz */
     SystemClock_Config();
 
@@ -204,6 +242,9 @@ static void BSP_Init(void)
 
     /* usart 端口初始化 */
     DEBUG_USART_Config();
+
+    /*初始化USART 配置模式为 115200 8-N-1，中断接收*/
+    USART_Config();
 
     /*按键初始化*/
     Key_GPIO_Config();
