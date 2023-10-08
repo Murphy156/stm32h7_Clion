@@ -252,6 +252,9 @@ static void BSP_Init(void)
     /* 步进电机初始化 */
     stepper_Init_test();
 
+    /* BLDC电机初始化 */
+    bldcm_init();
+
 }
 
 /**
