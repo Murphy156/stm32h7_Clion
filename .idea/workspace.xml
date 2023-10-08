@@ -20,15 +20,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="309fa325-2eed-46cc-a25d-57cea8bdd8d1" name="Changes" comment="">
+    <list default="true" id="309fa325-2eed-46cc-a25d-57cea8bdd8d1" name="Changes" comment="reset the stm32halrcc and system clock">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/core_delay.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/core_delay.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/core_delay.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/core_delay.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/stm32h7xx_hal_timebase_tim.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/stm32h7xx_hal_timebase_tim.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Middlewares/Third_Party/FreeRTOS/Source/tasks.c" beforeDir="false" afterPath="$PROJECT_DIR$/Middlewares/Third_Party/FreeRTOS/Source/tasks.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +36,9 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -70,9 +68,9 @@
   }
 }</component>
   <component name="RunManager" selected="OpenOCD Download &amp; Run.ttv2">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="ttv2.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ttv2" TARGET_NAME="ttv2.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ttv2" RUN_TARGET_NAME="ttv2.elf">
@@ -113,8 +111,17 @@
       <workItem from="1696655055353" duration="76000" />
       <workItem from="1696655143348" duration="773000" />
       <workItem from="1696655939189" duration="26000" />
-      <workItem from="1696656368438" duration="21703000" />
+      <workItem from="1696656368438" duration="21773000" />
+      <workItem from="1696724941488" duration="2140000" />
     </task>
+    <task id="LOCAL-00001" summary="reset the stm32halrcc and system clock">
+      <created>1696690237444</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696690237444</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +132,10 @@
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticFoundErrors value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="reset the stm32halrcc and system clock" />
+    <option name="LAST_COMMIT_MESSAGE" value="reset the stm32halrcc and system clock" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

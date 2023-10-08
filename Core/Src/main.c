@@ -111,7 +111,6 @@ static void AppTaskCreate(void)
                           (UBaseType_t   )  2         ,/** 任务的优先级*/
                           (TaskHandle_t* )  &LED_Task_Handle);/** 任务控制块指针*/
     if(pdPASS == xReturn)
-
     /*** 创建KEY_Task任务 */
     xReturn =  xTaskCreate((TaskFunction_t ) KEY_Task   ,/** 任务入口函数 */
                            (const char*    ) "KEY_Task" ,/** 任务名字*/
@@ -120,7 +119,6 @@ static void AppTaskCreate(void)
                            (UBaseType_t    ) 3          ,/** 任务的优先级*/
                            (TaskHandle_t*  ) &KEY_Task_Handle);   /** 任务控制块指针*/
     if(pdPASS == xReturn)
-
     vTaskDelete(AppTaskCreate_Handle);
 
     taskEXIT_CRITICAL();
@@ -137,11 +135,9 @@ static void LED_Task(void* parameter)
     while (1)
     {
         LED1_ON
-        printf("LED_Task Running,LED1_ON\\r\\n");
         vTaskDelay(500);   /* 延时500个tick */
 
         LED1_OFF;
-        printf("LED_Task Running,LED1_OFF\r\n");
         vTaskDelay(500);   /* 延时500个tick */
     }
 }
