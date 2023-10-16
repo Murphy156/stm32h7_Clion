@@ -20,11 +20,18 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="309fa325-2eed-46cc-a25d-57cea8bdd8d1" name="Changes" comment="add the whole model">
+    <list default="true" id="309fa325-2eed-46cc-a25d-57cea8bdd8d1" name="Changes" comment="HAD ADD THE BLDCINIT">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/bsp_protocol.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/bsp_protocol.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/bsp_bldc_tim.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/bsp_bldc_tim.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/main.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/main.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/bsp_bldc_tim.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/bsp_bldc_tim.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/bsp_protocol.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/bsp_protocol.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/stm32h7xx_it.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/stm32h7xx_it.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,29 +75,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "last_opened_file_path": "E:/lite_Ctr_foc/Ctrl-FOC-Lite-main/2.Firmware/STM32_HAL_version/Ctrl-FOC-Lite-fw",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CLionExternalConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/aoc11/Desktop/ttv2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="OpenOCD Download &amp; Run.ttv2">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ttv2.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ttv2" TARGET_NAME="ttv2.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ttv2" RUN_TARGET_NAME="ttv2.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -130,7 +132,20 @@
       <workItem from="1696655143348" duration="773000" />
       <workItem from="1696655939189" duration="26000" />
       <workItem from="1696656368438" duration="21773000" />
-      <workItem from="1696724941488" duration="23517000" />
+      <workItem from="1696724941488" duration="23904000" />
+      <workItem from="1697001652820" duration="12979000" />
+      <workItem from="1697024526308" duration="1532000" />
+      <workItem from="1697026316837" duration="1051000" />
+      <workItem from="1697027391405" duration="2236000" />
+      <workItem from="1697076812008" duration="1681000" />
+      <workItem from="1697078915978" duration="1297000" />
+      <workItem from="1697248432786" duration="3113000" />
+      <workItem from="1697332420860" duration="9522000" />
+      <workItem from="1697355768359" duration="601000" />
+      <workItem from="1697435022646" duration="121000" />
+      <workItem from="1697435155670" duration="87000" />
+      <workItem from="1697435257294" duration="1854000" />
+      <workItem from="1697454516653" duration="1000" />
     </task>
     <task id="LOCAL-00001" summary="reset the stm32halrcc and system clock">
       <created>1696690237444</created>
@@ -160,7 +175,21 @@
       <option name="project" value="LOCAL" />
       <updated>1696755246224</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="HAD FIX THE PROTOCOL">
+      <created>1696774319444</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696774319444</updated>
+    </task>
+    <task id="LOCAL-00006" summary="HAD ADD THE BLDCINIT">
+      <created>1696774414257</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1696774414257</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,20 +217,17 @@
     <MESSAGE value="the problem is printf is didn't work" />
     <MESSAGE value="add the stepperControl" />
     <MESSAGE value="add the whole model" />
-    <option name="LAST_COMMIT_MESSAGE" value="add the whole model" />
+    <MESSAGE value="HAD FIX THE PROTOCOL" />
+    <MESSAGE value="HAD ADD THE BLDCINIT" />
+    <option name="LAST_COMMIT_MESSAGE" value="HAD ADD THE BLDCINIT" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Core/Src/stm32h7xx_it.c</url>
-          <line>173</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Core/Src/main.c</url>
-          <line>78</line>
-          <option name="timeStamp" value="10" />
+          <url>file://$PROJECT_DIR$/Core/Src/bsp_protocol.c</url>
+          <line>534</line>
+          <option name="timeStamp" value="54" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

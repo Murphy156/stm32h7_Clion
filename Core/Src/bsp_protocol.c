@@ -11,6 +11,7 @@
 #include "bsp_stepperControl.h"
 #include "bsp_led.h"
 #include "bsp_bldc_control.h"
+#include "main.h"
 
 UART_HandleTypeDef UartHandle;
 
@@ -368,6 +369,7 @@ int8_t receiving_process(void)
             /** 已经找到了帧头以及校对了CRC,此时，rd_p指向当前数据帧的命令位 */
         else
         {
+            taskENTER_CRITICAL(); /*** 进入临界区 */
 
             cmd_type = data_buff[rd_p];
             switch (cmd_type)
@@ -385,6 +387,7 @@ int8_t receiving_process(void)
                     /** 处理完一帧数据后将rd_p移到下一个数据帧开头 */
                     rd_p = (rd_p+3) % max_length;
                 }
+                    taskEXIT_CRITICAL();
                     break;
 
                 case DisablePump1_CMD:
@@ -394,6 +397,7 @@ int8_t receiving_process(void)
                     /**处理完一帧数据后将rd_p移到下一个数据帧开头*/
                     rd_p = (rd_p+7) % max_length;
                 }
+                    taskEXIT_CRITICAL();
                     break;
 
                 case EnablePump2_CMD:
@@ -408,6 +412,7 @@ int8_t receiving_process(void)
                     /** 处理完一帧数据后将rd_p移到下一个数据帧开头*/
                     rd_p = (rd_p+3) % max_length;
                 }
+                    taskEXIT_CRITICAL();
                     break;
 
                 case DisablePump2_CMD:
@@ -417,6 +422,7 @@ int8_t receiving_process(void)
                     /** 处理完一帧数据后将rd_p移到下一个数据帧开头 */
                     rd_p = (rd_p+7) % max_length;
                 }
+                    taskEXIT_CRITICAL();
                     break;
 
                 case EnablePump3_CMD:
@@ -431,6 +437,7 @@ int8_t receiving_process(void)
                     /**处理完一帧数据后将rd_p移到下一个数据帧开头 */
                     rd_p = (rd_p+3) % max_length;
                 }
+                    taskEXIT_CRITICAL();
                     break;
 
                 case DisablePump3_CMD:
@@ -440,6 +447,7 @@ int8_t receiving_process(void)
                     /**处理完一帧数据后将rd_p移到下一个数据帧开头*/
                     rd_p = (rd_p+7) % max_length;
                 }
+                    taskEXIT_CRITICAL();
                     break;
 
                 case EnablePump4_CMD:
@@ -454,6 +462,7 @@ int8_t receiving_process(void)
                     /**处理完一帧数据后将rd_p移到下一个数据帧开头*/
                     rd_p = (rd_p+3) % max_length;
                 }
+                    taskEXIT_CRITICAL();
                     break;
 
                 case DisablePump4_CMD:
@@ -463,6 +472,7 @@ int8_t receiving_process(void)
                     /**处理完一帧数据后将rd_p移到下一个数据帧开头*/
                     rd_p = (rd_p+7) % max_length;
                 }
+                    taskEXIT_CRITICAL();
                     break;
 
                 case ChangePump1Speed_CMD:
@@ -475,6 +485,7 @@ int8_t receiving_process(void)
                     /**处理完一帧数据后将rd_p移到下一个数据帧开头*/
                     rd_p = (rd_p+3) % max_length;
                 }
+                    taskEXIT_CRITICAL();
                     break;
 
                 case ChangePump2Speed_CMD:
@@ -487,6 +498,7 @@ int8_t receiving_process(void)
                     /**处理完一帧数据后将rd_p移到下一个数据帧开头*/
                     rd_p = (rd_p+3) % max_length;
                 }
+                    taskEXIT_CRITICAL();
                     break;
 
                 case ChangePump3Speed_CMD:
@@ -499,6 +511,7 @@ int8_t receiving_process(void)
                     /**处理完一帧数据后将rd_p移到下一个数据帧开头*/
                     rd_p = (rd_p+3) % max_length;
                 }
+                    taskEXIT_CRITICAL();
                     break;
 
                 case ChangePump4Speed_CMD:
@@ -511,11 +524,11 @@ int8_t receiving_process(void)
                     /**处理完一帧数据后将rd_p移到下一个数据帧开头*/
                     rd_p = (rd_p+3) % max_length;
                 }
+                    taskEXIT_CRITICAL();
                     break;
 
                 case EnablePump5_CMD:
                 {
-
                     HAL_NVIC_EnableIRQ(HALL_TIM_IRQn);            // 使能中断
 
                     /**获取参数值*/
@@ -528,6 +541,7 @@ int8_t receiving_process(void)
                     /**处理完一帧数据后将rd_p移到下一个数据帧开头*/
                     rd_p = (rd_p+3) % max_length;
                 }
+                    taskEXIT_CRITICAL();
                     break;
 
                 case DisablePump5_CMD:
@@ -538,6 +552,7 @@ int8_t receiving_process(void)
 
                     rd_p = (rd_p+7) % max_length;
                 }
+                    taskEXIT_CRITICAL();
                     break;
 
                 case ChangePump5Speed_CMD:
@@ -550,8 +565,10 @@ int8_t receiving_process(void)
                     /**处理完一帧数据后将rd_p移到下一个数据帧开头*/
                     rd_p = (rd_p+3) % max_length;
                 }
+                    taskEXIT_CRITICAL();
 
                 default:
+                    taskEXIT_CRITICAL();
                     return -1;
             }
 

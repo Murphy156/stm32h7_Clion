@@ -39,11 +39,11 @@
  * 以后我们要想操作这个任务都需要通过这个任务句柄，如果是自身的任务操作自己，那么
  * 这个句柄可以为NULL。
  */
-static TaskHandle_t AppTaskCreate_Handle = NULL;
-static TaskHandle_t LED_Task_Handle = NULL;
-static TaskHandle_t KEY_Task_Handle = NULL;
-static TaskHandle_t PROTOCOL_Task_Handle = NULL;
-
+//static TaskHandle_t AppTaskCreate_Handle = NULL;
+//static TaskHandle_t LED_Task_Handle = NULL;
+//static TaskHandle_t KEY_Task_Handle = NULL;
+//static TaskHandle_t PROTOCOL_Task_Handle = NULL;
+//
 UART_HandleTypeDef huart1;
 
 
@@ -129,7 +129,7 @@ static void AppTaskCreate(void)
 
     xReturn = xTaskCreate((TaskFunction_t ) PROTOCOL_Task   , /** 任务入口函数 */
                           (const char*    ) "PROTOCOL_Task" , /** 任务名字*/
-                          (uint16_t       ) 512             , /** 任务栈大小*/
+                          (uint16_t       ) 1024             , /** 任务栈大小*/
                           (void*          ) NULL            , /** 任务入口函数参数*/
                           (UBaseType_t    ) 2               , /** 任务的优先级*/
                           (TaskHandle_t*  ) &PROTOCOL_Task_Handle);
@@ -199,7 +199,7 @@ static void KEY_Task(void* parameter)
             (motor5_en_flag > 0) ? set_BLDC_disable() : set_BLDC_enable();
             motor5_en_flag = !motor5_en_flag;
         }
-        vTaskDelay(20);/* 延时20个tick */
+        vTaskDelay(20);/** 延时20个tick */
     }
 }
 
@@ -213,8 +213,8 @@ static void PROTOCOL_Task(void* pvParameters)
 {
     while (1)
     {
-        LED2_ON;
         receiving_process();
+        vTaskDelay(500);
     }
 
 }

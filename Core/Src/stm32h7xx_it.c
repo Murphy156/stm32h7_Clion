@@ -164,11 +164,23 @@ void SysTick_Handler(void)
 }
 /** USER CODE END 2 */
 
+
+/* USER CODE BEGIN 1 */
+void HALL_TIM_IRQHandler(void)
+{
+    HAL_TIM_IRQHandler(&htimx_hall);
+}
+/* USER CODE END 1 */
+
+
 /** USER CODE BEGIN 2 */
 void USART_IRQHandler(void)
 {
-    uint8_t data[1];
+    uint32_t ulReturn;
+    /** 进入临界段，临界段可以嵌套 */
+    ulReturn = taskENTER_CRITICAL_FROM_ISR();
 
+    uint8_t data[1];
     if(__HAL_UART_GET_IT_SOURCE(&UartHandle, UART_IT_RXNE) != RESET)
     {
         data[0] = UartHandle.Instance->RDR;
@@ -177,6 +189,9 @@ void USART_IRQHandler(void)
     }
     HAL_UART_IRQHandler(&UartHandle);
     __HAL_UART_ENABLE_IT(&UartHandle,UART_IT_RXNE);
+
+    /** 推出临界段 */
+    taskEXIT_CRITICAL_FROM_ISR(ulReturn);
 }
 /** USER CODE END 2 */
 

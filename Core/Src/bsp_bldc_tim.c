@@ -11,6 +11,7 @@
 #include "bsp_bldc_tim.h"
 #include "bsp_led.h"
 #include "bsp_debug_usart.h"
+#include "stm32h7xx_hal_tim_ex.h"
 
 TIM_HandleTypeDef htimx_bldcm;
 TIM_OC_InitTypeDef TIM_OCInitStructure;
@@ -241,9 +242,9 @@ void hall_enable(void)
     /* 使能霍尔传感器接口 */
     __HAL_TIM_ENABLE_IT(&htimx_hall, TIM_IT_TRIGGER);
     __HAL_TIM_ENABLE_IT(&htimx_hall, TIM_IT_UPDATE);
-
+    LED4_ON;
     HAL_TIMEx_HallSensor_Start(&htimx_hall);
-//  LED1_OFF;
+    LED4_OFF;
     HAL_TIM_TriggerCallback(&htimx_hall);   // 执行一次换相
 }
 
@@ -473,7 +474,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
     if (update++ > 1)    // 有一次在产生更新中断前霍尔传感器没有捕获到值
     {
-        printf("堵转超时\r\n");
+//        printf("堵转超时\\r\\n");
         update = 0;
 
         LED1_ON;     // 点亮LED1表示堵转超时停止
